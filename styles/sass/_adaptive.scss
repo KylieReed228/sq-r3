@@ -1,0 +1,118 @@
+@media screen and (max-width: 720px) {
+    .home-reviews {
+        flex-direction: column;
+    }
+    .home-reviews__item {
+        margin: 0;
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+    .about {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .about__content {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .about__img {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .reviews-slide {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .reviews-slide__img {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .header {
+       padding: 25px 20px;
+    }
+    .nav {
+        position: fixed;
+        top: 83px;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: $white;
+        overflow: auto;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.3s ease 0s;
+        &.active {
+            left: 0;
+        }
+    }
+    .nav__item {
+        &:not(:last-child) {
+            margin-right: 0;
+        }
+        margin: 10px 0;
+    }
+    .header__nav {
+        margin-right: 0;
+    }
+    .nav-btn {
+        display: none;
+        width: 35px;
+        height: 20px;
+        position: relative;
+        &::before, &::after, & span {
+            content: '';
+            position: absolute;
+            background-color: $black;
+            width: 100%;
+            height: 2px;
+            transition: all 0.3s ease 0s;
+        }
+        &::before {
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            bottom: 0;
+            left: 0;
+        }
+        & span {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto 0;
+        }
+        &.active::before {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+        &.active::after {
+            transform: rotate(-45deg);
+            top: 9px;
+        }
+        &.active span{
+            transform: scale(0);
+        }
+        @media screen and (max-width: 992px) {
+            display: block;
+            z-index: 3;
+        }
+    }
+    .header__search {
+        @include adaptive-value("margin-right", 40, 30, 1);
+    }
+    .home {
+        padding-top: 76px;
+    }
+}

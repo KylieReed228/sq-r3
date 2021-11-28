@@ -1,0 +1,639 @@
+@use 'sass:math';
+@use 'sass:color';
+
+@import 'config';
+@import 'blocks/**/*';
+
+._container {
+    max-width: 1190px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.nav {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    &__item {
+        list-style: none;
+        &:not(:last-child) {
+            margin-right: 44px;
+        }
+    }
+    &__link {
+        text-decoration: none;
+        color: $black;
+        position: relative;
+        transition:  0.3s ease-in;
+        &:hover, &:focus {
+            &::after {
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                bottom: 0;
+                left: 0;
+            }
+        }
+    }
+}
+
+.btn {
+    background-color: $gray;
+    font-weight: 400;
+    color: $white;
+    padding: 13px 17px;
+    @include adaptive-value("font-size", 18, 12, 1);
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s ease-in;
+    border: 1px solid transparent;
+    &:hover, &:focus {
+        color: $gray;
+        border: 1px solid $gray;
+        background-color: transparent;
+    }
+}
+
+.header {
+    background-color: $white;
+    padding: 23px 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    border-bottom: 1px solid $black;
+}
+
+.header__inner {
+    max-width: 1350px;
+    margin: 0 auto;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.header__logo {
+    flex: 1 1 auto;
+    text-transform: uppercase;
+    font-size: 25px;
+    white-space: nowrap;
+}
+
+.header__nav {
+    margin-right: 56px;
+}
+
+.header__search {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+
+
+// ** Home ** //
+
+.home {
+    width: 100%;
+    max-width: 1440px;
+    padding-top: 90px;
+    height: 100%;
+    max-height: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.home__content {
+    width: 100%;
+    @include adaptive-value("min-height", 762, 400, 1);
+    background-image: url(../images/dist/home-bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+.home__aside {
+    width: 22%;
+    z-index: 3;
+    backdrop-filter: blur(30px);
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+        background-color: rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(9px);
+    }
+}
+
+.social {
+    @include adaptive-value("width", 30, 24, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include adaptive-value("margin-left", 55, 15, 1);
+    @include adaptive-value("margin-top", 251, 100, 1);
+}
+
+.social__item {
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 40, 30, 1);
+    }
+}
+
+.home__label {
+    @include adaptive-value("margin-top", 160, 80, 1);
+}
+
+.label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    @supports ((-webkit-backdrop-filter: blur(31px)) or (backdrop-filter: blur(31px))) {
+        background: linear-gradient(112.8deg, rgba(207, 207, 207, 0.26) 0%, rgba(207, 207, 207, 0.06) 92.87%);
+        backdrop-filter: blur(9px);
+        }
+}
+
+.label__body {
+    padding: 0 15px;
+    @include adaptive-value("padding-top", 41, 20, 1);
+    @include adaptive-value("padding-bottom", 41, 20, 1);
+}
+
+.label__title {
+    max-width: 500px;
+    font-family: 'Revalia', sans-serif;
+    @include adaptive-value("font-size", 36, 22, 1);
+    @include adaptive-value("line-height", 45, 20, 1);
+    text-align: center;
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 25, 15, 1);
+    }
+}
+
+.label__text {
+    @include adaptive-value("max-width", 412, 220, 1);
+    margin: 0 auto;
+    @include adaptive-value("font-size", 20, 14, 1);
+    @include adaptive-value("line-height", 24, 16, 1);
+    text-align: center;
+    color: $white;
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 30, 18, 1);
+    }
+}
+
+.label__order {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.home__reviews {
+    margin-left: 22%;
+}
+
+
+.home-reviews {
+    display: flex;
+    align-items: center;
+    @include adaptive-value("padding-top", 37, 20, 1);
+    @include adaptive-value("padding-bottom", 37, 20, 1);
+    @include adaptive-value("padding-left", 75, 20, 1);
+    @include adaptive-value("padding-right", 75, 20, 1);
+}
+
+.home-reviews__item {
+    @include adaptive-value("margin-left", 40, 15, 1);
+    @include adaptive-value("margin-right", 40, 15, 1);
+}
+
+.home-reviews__title {
+    @include adaptive-value("font-size", 40, 24, 1);
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 25, 15, 1);
+    }
+}
+
+.home-reviews__subtitle {
+    @include adaptive-value("font-size", 20, 14, 1);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    & img {
+        @include adaptive-value("padding-left", 10, 5, 1);
+        @include adaptive-value("padding-right", 10, 5, 1);
+    }
+}
+
+// ** About ** //
+
+.about {
+    max-width: 1440px;
+    margin: 0 auto;
+    @include adaptive-value("padding-top", 120, 80, 1);
+}
+
+.about__caption {
+    @include adaptive-value("margin-bottom", 45, 25, 1);
+    @include adaptive-value("padding-left", 141, 60, 1);
+}
+
+.caption__title {
+    @include adaptive-value("font-size", 30, 18, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 25, 13, 1)
+    }
+}
+
+.caption__block {
+    display: flex;
+    align-items: center;
+    & span {
+        height: 1px;
+        @include adaptive-value("width", 69, 30, 1);
+        background-color: $black;
+        margin-right: 7px;
+    }
+}
+
+.caption__text {
+    max-width: 358px;
+    @include adaptive-value("font-size", 20, 14, 1);
+    color: $gray;
+    @include adaptive-value("line-height", 30, 20, 1);
+}
+
+.about__content {
+    display: flex;
+    justify-content: space-between;
+    @include adaptive-value("padding-right", 141, 20, 1);
+}
+
+.about__img {
+    width: 47%;
+    @include adaptive-value("margin-right", 30, 20, 1);
+    align-self: flex-start;
+}
+
+.about__desc {
+    @include adaptive-value("margin-bottom", 58, 30, 1);
+}
+
+.about__text {
+    color: $gray;
+    line-height: 159%;
+    font-weight: 300;
+    @include adaptive-value("font-size", 20, 14, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 30, 15, 1);
+    }
+}
+
+.about__btn {
+    @include adaptive-value("padding", 13, 10, 1);
+}
+
+.commerce {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    & img {
+        margin-bottom: 10px;
+        &:not(:last-child) {
+            @include adaptive-value("margin-right", 85, 30, 1);
+        }
+    }
+}
+
+// ** SERVICE ** //
+
+.service {
+    @include adaptive-value("padding-top", 120, 80, 1);
+}
+
+.service__caption {
+    @include adaptive-value("margin-bottom", 45, 25, 1);
+}
+
+.service__inner {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service__item {
+    @include adaptive-value("margin-bottom", 10, 5, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-right", 30, 15, 1);
+    }
+}
+
+.item-service{
+    max-width: 366px;
+    padding: 12px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease 0s;
+    &:hover, &:focus {
+        box-shadow: 4px 4px 10px rgba($black, 0.05);
+    }
+}
+
+.item-service__img {
+    @include adaptive-value("width", 75, 40, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 15, 10, 1);
+    }
+}
+
+.item-service__title {
+    @include adaptive-value("font-size", 20, 14, 1);
+    font-weight: 500;
+    @include adaptive-value("margin-bottom", 10, 7, 1);
+    color: $black;
+}
+
+.item-service__text {
+    @include adaptive-value("font-size", 20, 14, 1);
+    @include adaptive-value("line-height", 30, 20, 1);
+    font-weight: 300;
+    color: $purple;
+}
+
+.furniture__caption {
+    text-align: center;
+    @include adaptive-value("margin-bottom", 45, 25, 1);
+    .caption__block {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.furniture__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include adaptive-value("margin-bottom", 50, 30, 1);
+}
+
+.furniture__search {
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    display: flex;
+    margin-right: 30px;
+    & input {
+        background-color: transparent;
+        border: none;
+        border-radius: 5px;
+        @include adaptive-value("font-size", 20, 14, 1);
+        @include adaptive-value("line-height", 18, 12, 1);
+        @include adaptive-value("padding", 16, 10, 1);
+        @include adaptive-value("width", 217, 100, 1);
+        color: #686868;
+        &:focus, &:active {
+            outline: 1px solid #686868;
+        }
+    }
+}
+
+.furniture__search-btn {
+    width: 50px;
+    display: flex;
+    border: none;
+    padding: 0;
+    & svg {
+        margin: auto;
+        &:hover {
+            stroke: $black;
+        }
+    }
+}
+
+.furniture__tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    color: #686868;
+    @include adaptive-value("font-size", 20, 14, 1);
+    @include adaptive-value("line-height", 30, 20, 1);
+    white-space: nowrap;
+    &:not(:last-child) {
+        @include adaptive-value("margin-right", 30, 15, 1);
+    }
+    &:hover, &.active {
+        color: $black;
+    }
+}
+
+
+.order-item {
+    background-color: $light-gray;
+    @include adaptive-value("padding", 10, 5, 1);
+    max-width: 267px;
+    margin: 0 auto;
+    @include adaptive-value("margin-bottom", 30, 15, 1);
+    transition: filter 0.3s ease 0s;
+    &:hover {
+        filter: drop-shadow(0px 4px 4px rgba($black, 0.25));
+    }
+}
+
+.order-item__img {
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 9, 5, 1);
+    }
+}
+
+.order-item__block {
+    color: $gray;
+    @include adaptive-value("font-size", 20, 14, 1);
+    @include adaptive-value("line-height", 30, 20, 1);
+    display: flex;
+    justify-content: space-between;
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 10, 5, 1);
+    }
+}
+
+.order-item__text {
+    color: $purple;
+    @include adaptive-value("font-size", 16, 12, 1);
+    @include adaptive-value("line-height", 24, 18, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 13, 8, 1);
+    }
+}
+
+.reviews {
+    @include adaptive-value("padding-top", 118, 50, 1);
+    @include adaptive-value("padding-bottom", 118, 50, 1);
+}
+
+
+.reviews__caption {
+    @include adaptive-value("margin-bottom", 45, 25, 1);
+}
+
+.reviews-slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.reviews-slide {
+    padding: 5px 0 5px 5px;
+    @include adaptive-value("padding-right", 25, 10, 1);
+    background-color: $light-gray;
+    display: flex;
+    align-items: center;
+    height: unset;
+    @include adaptive-value("width", 534, 275, 1);
+}
+
+.reviews-slide__block {
+    @include adaptive-value("width", 346, 275, 1);
+}
+
+.reviews-slide__img {
+    @include adaptive-value("width", 163, 100, 1);
+    @include adaptive-value("margin-right", 25, 15, 1);
+}
+
+.reviews-slide__name {
+    @include adaptive-value("font-size", 20, 14, 1);
+    @include adaptive-value("line-height", 30, 20, 1);
+    color: $gray;
+}
+
+.reviews-slide__date {
+    color: $purple;
+    @include adaptive-value("font-size", 16, 12, 1);
+    @include adaptive-value("line-height", 30, 20, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 10, 5, 1);
+    }
+}
+
+.reviews-slide__text {
+    @include adaptive-value("font-size", 16, 12, 1);
+    line-height: 158%;
+    color: $gray;
+    & span {
+        color: $yellow;
+    }
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 15, 10, 1);
+    }
+}
+
+.reviews-slide__stars {
+    display: flex;
+    & img {
+        &:not(:last-child) {
+            @include adaptive-value("margin-right", 10, 5, 1);
+        }
+    }
+}
+
+.reviews-slider__navigation {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    z-index: 10;
+    width: 100%;
+    @include adaptive-value("height", 50, 35, 1);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.reviews-slider__button {
+    background: rgba(55, 55, 55, 0.5);
+    @include adaptive-value("width", 50, 35, 1);
+    @include adaptive-value("height", 50, 35, 1);
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    pointer-events: auto;
+    & svg {
+        display: block;
+        margin: auto;
+        @include adaptive-value("width", 12, 8, 1);
+        @include adaptive-value("height", 24, 18, 1);
+    }
+}
+
+.reviews-slider__button_prev {
+    transform: rotate(180deg);
+}
+
+.footer {
+    @include adaptive-value("padding-top", 80, 40, 1);
+    @include adaptive-value("padding-bottom", 80, 40, 1);
+    background-color: $gray;
+}
+
+.footer__inner {
+    display: flex;
+}
+
+.footer__column {
+    &:not(:last-child) {
+        @include adaptive-value("margin-right", 150, 50, 1);
+    }
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__title {
+    color: $white;
+    font-weight: 500;
+    @include adaptive-value("font-size", 20, 14, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 30, 15, 1);
+    }
+}
+
+.footer__link {
+    color: $white;
+    @include adaptive-value("font-size", 14, 10, 1);
+    &:not(:last-child) {
+        @include adaptive-value("margin-bottom", 16, 10, 1);
+    }
+}
+
+.footer__logo {
+    font-weight: 700;
+    text-transform: uppercase;
+    @include adaptive-value("font-size", 35, 24, 1);
+}
+
+.footer__phone {
+    @include adaptive-value("margin-bottom", 11, 6, 1);
+}
+
+.phone, .email {
+    color: $white;
+    @include adaptive-value("font-size", 16, 12, 1);
+    display: flex;
+    align-items: center;
+    & img {
+        margin-right: 10px;
+    }
+}
+
+
+
+
+
+@import 'adaptive';
