@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		body.classList.toggle('lock')
 	})
 
+	// Search 
+
+	let searchImg = document.querySelector('.header__search-img')
+	let searchInput = document.querySelector('.header__search-input')
+	
+	searchImg.addEventListener('click', function(){
+		searchInput.classList.toggle('active')
+	})
+
 })
 
 

@@ -9,8 +9,6 @@ $yellow: #F6DE00;
 
 // IMPORT SECTION
 
-@import 'node_modules/bootstrap/scss/bootstrap-grid.scss'; // Optional Bootstrap Grid
-
 
 @import 'node_modules/swiper/swiper-bundle';
 
@@ -86,6 +84,11 @@ html {
   
   a {
 	text-decoration: none;
+  }
+
+  button {
+  border: none;
+  cursor: pointer;
   }
 
 body {
